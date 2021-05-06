@@ -1,0 +1,49 @@
+<%= form_with(model: book) do |form| %>
+<% if book.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+    <ul>
+        <% book.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+<div class=" is-flex is-flex-direction-row">
+    <div class="field is-3 column">
+        <%= form.label :title%>
+        <%= form.text_field :title ,  class: "textarea"%>
+    </div>
+    <div class="field is-3 column">
+        <%= form.label :description %>
+        <%= form.text_area :description ,  class: "textarea"%>
+    </div>
+    <div class="field is-3 column">
+        <%= form.label :purchase_link %>
+        <%= form.text_area :purchase_link ,  class: "textarea"%>
+    </div>
+</div>
+
+<div class="field is-3 column">
+    <%= form.label :author_id %>
+    <%=  form.collection_select(:author_id, Author.all, :id, :name, {:prompt => 'Select the author'}, :selected => @book.author_id ) %>
+    <%= link_to 'New author', new_author_path, class: "has-text-danger has-text-weight-semibold"%>
+</div>
+
+
+
+<div class="field is-3 column">
+    <%= form.label :readen %>
+    <%= form.check_box :readen, class: "checkbox" %>
+</div>
+
+<div class="conteneur_button">
+    <div class="actions ml-3">
+        <%= form.submit  :class => "button is-danger" %>
+    </div>
+
+    <%= link_to 'Back', books_path, class: "button is-danger is-light " %>
+</div>
+
+<% end %>

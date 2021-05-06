@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+<div class="">
+
+
+
+
+    <nav class="navbar booknavbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class=" title is-1 is-spaced fonts mt-2 ml-5 ">Bookshelf</h1>
+
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <%= link_to 'New Book', new_book_path, class: "button is-danger is-light"%>
+                        <%= link_to 'view all authors', authors_path, class: "button is-warning is-light"%>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="columns container book-container">
+
+    <% @books_readen = @books.select{|b| b.readen?} %>
+    <div class="column">
+        <div class="content is-large fonts">Lu</div>
+        <% @books_readen.each do |book| %>
+        <div class="flex box is-align-items-flex-start">
+            <div class="title is-4"><%= book.title  %></div>
+            <div class="subtitle is-5"><%= book.author.name %> <%= book.author.lastname %></div>
+            <div><%= book.description %></div>
+
+            <div class="conteneur_button mt-3 ">
+                <a class="button is-link is-light mr-3" href="<%= book.purchase_link %>">Acheter</a>
+                <%= link_to 'Edit', edit_book_path(book),:class=>"mr-3 button is-light is-primary" %>
+                <%= link_to 'Supp', book, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"button is-light is-primary" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+
+    <% @books_unreaden = @books.select{|b| !b.readen?} %>
+    <div class="column">
+        <div class="content is-large fonts ">A lire</div>
+        <% @books_unreaden.each do |book| %>
+        <div class="flex box is-align-items-flex-start">
+            <div class="title is-4"><%= book.title  %></div>
+            <div class="subtitle is-5"><%= book.author.name %> <%= book.author.lastname %></div>
+            <div><%= book.description %></div>
+
+            <div class="conteneur_button mt-3 ">
+                <a class="button is-link is-light mr-3" href="<%= book.purchase_link %>">Acheter</a>
+                <%= link_to 'Edit', edit_book_path(book),:class=>"mr-3 button is-light is-primary" %>
+                <%= link_to 'Supp', book, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"button is-light is-primary " %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+</div>
+<br>

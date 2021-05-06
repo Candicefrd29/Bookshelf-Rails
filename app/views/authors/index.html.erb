@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="title">Auteurs de votre bibliothèque</h1>
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th class="subtitle is-4">Name</th>
+      <th class="subtitle is-4">Lastname</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @authors.each do |author| %>
+      <tr>
+        <td class="has-background-danger-light"><%= author.name %></td>
+        <td class=" has-background-info-light"><%= author.lastname %></td>
+        <td><%= link_to 'Edit', edit_author_path(author), class:"has-text-danger has-text-weight-semibold" %></td>
+        <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?'} , class:"delete is-medium"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Author', new_author_path , class: "button is-danger is-light"%>
+<%= link_to 'Back', books_path, class: "button is-danger is-light" %>
+</div>
