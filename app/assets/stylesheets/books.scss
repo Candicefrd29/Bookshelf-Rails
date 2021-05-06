@@ -20,5 +20,22 @@
 }
 
 .booknavbar {
-  background-image: url("../braden-jarvis-prSogOoFmkw-unsplash.jpg");
+  background: url("./zdenek-machacek-YH4p4CYuvmw-unsplash.jpg");
+background-attachment: fixed;
+background-size: cover;
+min-height: 100vh;
+word-break: break-all;
+  
+}
+
+.littlecard {
+  background-color: rgba(255, 141, 10, 0.527);
+  border-radius: 6px;
+  
+}
+
+.backgroundbooknew {
+
+background-image: url("./sham-jallaludin-3u2ASPHYdIA-unsplash.jpg");
+background-size: cover;
 }

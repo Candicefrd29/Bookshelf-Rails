@@ -22,7 +22,9 @@
         <%= form.text_field :lastname, class:"textarea" %>
     </div>
 </div>
-<div class="actions is-half">
- <div class="ml-5">   <%= form.submit %></div>
+<div class="actions is-half is-flex is-flex-direction-row">
+ <div class="ml-5  "><%= form.submit  :class => 'button is-danger is-light mb-1'%></div>
+ 
+<%= link_to 'Back', new_book_path , class:"button is-light is-primary ml-2 mb-2"%> 
 </div>
 <% end %>
